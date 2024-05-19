@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[Swap Optimizer] Starting the path-finder service..."
+echo "[Validator] Starting the validator service..."
 
 # Ensure .env exists
 if [ ! -f .env ]; then
@@ -9,5 +9,5 @@ if [ ! -f .env ]; then
 fi
 
 # Run orchestrator logic
-echo "[Swap Optimizer] Starting orchestrator..."
+echo "[Validator] Starting Orchestrator..."
 npm start

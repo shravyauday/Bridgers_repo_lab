@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[Swap Optimizer Setup] Starting setup..."
+echo "[Validator Setup] Starting setup..."
 
 # Detect OS and install Node.js if missing
 OS="$(uname -s)"
@@ -63,12 +63,11 @@ if [ ! -f .env ]; then
     if [ -f .env_example ]; then
         cp .env_example .env
         echo "[INFO] Copied .env_example to .env"
-        echo "[WARN] Update your INFURA_URL in .env before proceeding."
     else
         echo "[ERROR] No .env or .env_example found. Cannot continue."
         exit 1
     fi
 fi
 
-echo "[Swap Optimizer Setup] Setup complete."
+echo "[Validator Setup] Setup complete."
 ./start.sh
