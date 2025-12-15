@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  [workflow_dispatch]
+    
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -t appjsfile -f appjs.Dockerfile .
+    - name: Tag the Docker image
+      run: docker tag appjsfile boddu/appjsfile:latest
+    - name: push image
+      run: |
+        docker push docker push boddu/appjsfile:latest
