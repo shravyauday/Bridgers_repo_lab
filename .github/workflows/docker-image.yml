@@ -18,4 +18,4 @@ jobs:
       run: docker tag appjsfile boddu/appjsfile:latest
     - name: push image
       run: |
-        docker push docker push boddu/appjsfile:latest
+        docker push boddu/appjsfile:latest
