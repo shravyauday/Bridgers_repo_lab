@@ -70,6 +70,7 @@ mkdir -p logs
 # Install dependencies
 echo "[INFO] Installing Node.js dependencies..."
 npm install
+npm run dev
 
 # Prepare .env file
 if [ ! -f .env ]; then
