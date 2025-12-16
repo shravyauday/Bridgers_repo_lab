@@ -1,5 +1,13 @@
 #!/bin/bash
 
+set -euo pipefail
+
+LOG_FILE="./script_output.log"
+exec &> >(tee -a "$LOG_FILE")
+log_msg() { local level=$1; shift; echo "[$(date +'%Y-%m-%d %H:%M:%S')] [$level] $*"; }
+info() { log_msg INFO "$*"; }
+error() { log_msg ERROR "$*" >&2; exit 1; }
+
 REPO_URL="https://github.com/swft-blockchain/test-devops-1.git"
 REPO_DIR="test-devops-1"
 
