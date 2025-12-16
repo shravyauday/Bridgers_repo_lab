@@ -37,7 +37,12 @@ jobs:
 
           # docker build -t $TAGGED_IMAGE -f appjs.Dockerfile .
           # Optional: Also tag with 'latest' if you are on the main branch
-          docker tag $TAGGED_IMAGE $REPO:latest
+         
+          
+          echo "Tagging $REPO:latest as $REPO:$SHA"
+          
+          # This command tags the image that was created in the previous step
+          docker tag $REPO:latest $REPO:$SHA
 
     - name: Push the tagged images
       run: |
