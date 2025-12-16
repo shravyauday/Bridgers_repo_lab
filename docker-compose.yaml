@@ -2,7 +2,7 @@ version: '3.8'
 services:
   appjsfile-service:
     # This names the final image pushed to Docker Hub
-    image: ${{ secrets.DOCKER_USERNAME }}/appjsfile:latest 
+    image: $DOCKER_USER/appjsfile:latest 
     # Points to your existing Dockerfile
     build:
       context: .
