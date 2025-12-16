@@ -24,7 +24,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-actions@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/appjsfile:latest
+          images: boddu/appjsfile
           flavor: |
             latest=false
           tags: |
@@ -33,7 +33,7 @@ jobs:
       
       - name: Build and push to Docker Hub
         id: docker_build
-        uses: docker/build-push-actions@v5
+        uses: docker/build-push-actions@v6
         with:
           push: true
           tags: ${{ steps.docker_meta.output.tags }}
