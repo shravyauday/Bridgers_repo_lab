@@ -24,7 +24,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-actions@v5
         with:
-          images: shravyaboddu/docker-ci-dockerhub
+          images: ${{ secrets.DOCKER_USERNAME }}/appjsfile:latest
           flavor: |
             latest=false
           tags: |
