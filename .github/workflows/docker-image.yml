@@ -35,6 +35,8 @@ jobs:
 
     - name: Push the tagged images
       run: |
+          REPO=${{ secrets.DOCKER_USERNAME }}/appjsfile
+          SHA=$(echo ${{ github.sha }} | cut -c1-7)
           
           # Push the specific SHA tag
-          docker push $TAGGED_IMAGE
+          docker push $REPO:$SHA
