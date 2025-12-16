@@ -1,9 +1,22 @@
 #!/bin/bash
 
+set -euo pipefail
+
+LOG_FILE="./script_output.log"
+exec &> >(tee -a "$LOG_FILE")
+log_msg() { local level=$1; shift; echo "[$(date +'%Y-%m-%d %H:%M:%S')] [$level] $*"; }
+info() { log_msg INFO "$*"; }
+error() { log_msg ERROR "$*" >&2; exit 1; }
 echo "[Validator Setup] Starting setup..."
 
 # Detect OS and install Node.js if missing
 OS="$(uname -s)"
+NODE_VERSION="$(node -v | cut -c 2- | cut -d'.' -f 1)"
+if [ $NODE_VERSION -ge 18 ]; then
+    echo "[INFO] Node.js installed is $NODE_VERSION"
+else
+    echo "[INFO] Node.js installed is $NODE_VERSION which is older than what we expect"
+fi
 
 detect_and_install_node() {
     if command -v node &>/dev/null && command -v npm &>/dev/null; then
